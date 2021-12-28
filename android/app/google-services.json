@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "1025702386891",
+    "firebase_url": "https://thuctapfb-default-rtdb.firebaseio.com",
+    "project_id": "thuctapfb",
+    "storage_bucket": "thuctapfb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1025702386891:android:ba4a32592cdaef60898f4e",
+        "android_client_info": {
+          "package_name": "com.example.net_working"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1025702386891-fr5ihkb4klj1k25oamhm4uo4p6q7fq04.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCITVjDYgqnJIDwNv8NmuX5feLwkNTk7lA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1025702386891-fr5ihkb4klj1k25oamhm4uo4p6q7fq04.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1025702386891:android:38287b99c90f5c7d898f4e",
+        "android_client_info": {
+          "package_name": "com.example.ngay_29_07"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1025702386891-fr5ihkb4klj1k25oamhm4uo4p6q7fq04.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCITVjDYgqnJIDwNv8NmuX5feLwkNTk7lA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1025702386891-fr5ihkb4klj1k25oamhm4uo4p6q7fq04.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

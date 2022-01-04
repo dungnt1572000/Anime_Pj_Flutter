@@ -11,6 +11,7 @@ class Schedule_Page_Controller extends GetxController{
     isLoading(true);
     try{
       var myschedule = await fetchSchedule(days.value);
+      print("Curr day: ${days.value}");
       schedule.value = myschedule;
     }finally{
       isLoading(false);

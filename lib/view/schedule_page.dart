@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:net_working/controller/schedule_page_controller.dart';
 import 'package:net_working/model/schedule.dart';
 
@@ -22,6 +23,25 @@ class _Schedule_PageState extends State<Schedule_Page> {
     'other'
   ];
   String selectedValue = 'monday';
+  DateTime cur = DateTime.now();
+@override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    selectedValue = DateFormat('EEEE').format(cur).toLowerCase();
+    schedule_controller.getDays(selectedValue);
+    schedule_controller.refreshfetch();
+    print(selectedValue);
+  }
+  @override
+  void dispose() {
+
+    var format = DateFormat('EEEE').format(cur);
+    schedule_controller.getDays(format.toLowerCase());
+    schedule_controller.refreshfetch();
+    print("Dispose roi ne");
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

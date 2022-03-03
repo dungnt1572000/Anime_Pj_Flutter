@@ -2,24 +2,27 @@ import 'package:get/get.dart';
 import 'package:net_working/controller/call_api_serice.dart';
 import 'package:net_working/model/schedule.dart';
 
-class Schedule_Page_Controller extends GetxController{
+class Schedule_Page_Controller extends GetxController {
   RxString days = 'monday'.obs;
   RxBool isLoading = true.obs;
-  var schedule = Schedule('', true, 1, []).obs;
+  var schedule = Schedule('', true, 1, true, '', '', []).obs;
 
-  fetchtogetSchedule() async{
+  fetchtogetSchedule() async {
     isLoading(true);
-    try{
+    try {
       var myschedule = await fetchSchedule(days.value);
       print("Curr day: ${days.value}");
       schedule.value = myschedule;
-    }finally{
+      print(schedule.toString());
+    } finally {
       isLoading(false);
     }
   }
- void getDays(String str){
+
+  void getDays(String str) {
     days(str);
- }
+  }
+
   @override
   void onInit() {
     // TODO: implement onInit
@@ -27,8 +30,7 @@ class Schedule_Page_Controller extends GetxController{
     super.onInit();
   }
 
-  void refreshfetch(){
+  void refreshfetch() {
     fetchtogetSchedule();
   }
-
 }

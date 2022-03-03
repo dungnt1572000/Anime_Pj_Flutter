@@ -3,17 +3,28 @@ class Schedule {
     this.requestHash,
     this.requestCached,
     this.requestCacheExpiry,
+    this.api_deprecation,
+    this.api_deprecation_date,
+    this.api_deprecation_into,
     this.days,
   );
+  @override
+  String toString() {
+    // TODO: implement toString
+    return 'Hello '+this.days.length.toString()+' Requesthash: '+this.requestHash;
+  }
 
   String requestHash;
   bool requestCached;
   int requestCacheExpiry;
+  bool api_deprecation;
+  String api_deprecation_date;
+  String api_deprecation_into;
   List<Sche_Item> days;
 
   factory Schedule.fromJson(Map<String, dynamic> json) {
     var list = json.keys.toList();
-    String str = list[3];
+    String str = list[6];
     var _days;
     switch (str) {
       case 'monday':
@@ -48,22 +59,36 @@ class Schedule {
         break;
     }
 
-    return Schedule(json['request_hash'], json['request_cached'],
-        json['request_cache_expiry'], _days);
+    return Schedule(
+        json['request_hash'],
+        json['request_cached'],
+        json['request_cache_expiry'],
+        json['API_DEPRECATION'],
+        json['API_DEPRECATION_DATE'],
+        json['API_DEPRECATION_INFO'],
+        _days);
   }
 }
 
 List<Sche_Item> make_List_Sche_Item(String str, Map<String, dynamic> json) {
-  var days = json[str] as List;
-  List<Sche_Item> _days = days.map((e) => Sche_Item.fromJson(e)).toList();
+  if (json[str] != null) {
+    var days = json[str] as List;
+    List<Sche_Item> _days = days.map((e) => Sche_Item.fromJson(e)).toList();
 
-  return _days;
+    return _days;
+  } else {
+    return [];
+  }
 }
 
 List<Gerne_Item> make_List_Gerne_Item(String str, Map<String, dynamic> json) {
-  var genre = json[str] as List;
-  List<Gerne_Item> _genre = genre.map((e) => Gerne_Item.fromJson(e)).toList();
-  return _genre;
+  if (json[str] != null) {
+    var genre = json[str] as List;
+    List<Gerne_Item> _genre = genre.map((e) => Gerne_Item.fromJson(e)).toList();
+    return _genre;
+  } else {
+    return [];
+  }
 }
 
 class Sche_Item {
@@ -94,18 +119,18 @@ class Sche_Item {
   String title;
   String imageUrl;
   String synopsis;
-  String type;
+  String? type;
   String airingStart;
-  dynamic episodes;
+  int? episodes;
   int members;
   List<Gerne_Item> genres;
-  List<dynamic> explicitGenres;
-  List<Gerne_Item> themes;
-  List<Gerne_Item> demographics;
+  List<dynamic>? explicitGenres;
+  List<Gerne_Item>? themes;
+  List<Gerne_Item>? demographics;
   String source;
-  List<Gerne_Item> producers;
+  List<Gerne_Item>? producers;
   dynamic score;
-  List<dynamic> licensors;
+  List<dynamic>? licensors;
   bool r18;
   bool kids;
 
@@ -122,18 +147,18 @@ class Sche_Item {
         json['title'],
         json['image_url'],
         json['synopsis'],
-        json['type'],
+        json['type'] ?? '',
         json['airing_start'],
-        json['episodes'],
+        json['episodes'] ?? 0,
         json['members'],
         _make_genres,
-        json['explicit_genres'],
+        json['explicit_genres'] ?? [],
         _make_themes,
         _make_demographics,
         json['source'],
         _make_producers,
         json['score'],
-        json['licensors'],
+        json['licensors'] ?? [],
         json['r18'],
         json['kids']);
   }

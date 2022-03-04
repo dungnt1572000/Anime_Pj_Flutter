@@ -19,7 +19,7 @@ import 'package:readmore/readmore.dart';
 
 import '../controller/anime_page_controller.dart';
 import '../controller/call_api_serice.dart';
-import '../model/animes_characters.dart';
+import '../model/anime/animes_characters.dart';
 import 'images.dart';
 import 'news_page.dart';
 

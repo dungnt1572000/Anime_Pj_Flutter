@@ -7,7 +7,7 @@ import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:net_working/controller/anime_page_controller.dart';
 import 'package:net_working/controller/call_api_serice.dart';
 import 'package:net_working/controller/reviews_controller.dart';
-import 'package:net_working/model/reviews.dart';
+import 'package:net_working/model/anime/reviews.dart';
 import 'package:readmore/readmore.dart';
 
 class Page_Reviews extends StatelessWidget {

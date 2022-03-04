@@ -6,7 +6,7 @@ import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:net_working/controller/anime_page_controller.dart';
 import 'package:net_working/controller/call_api_serice.dart';
-import 'package:net_working/model/images.dart';
+import 'package:net_working/model/anime/images.dart';
 
 class More_Images extends StatelessWidget {
   final animePage_controller page_controller = Get.find();

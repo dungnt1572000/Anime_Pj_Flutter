@@ -1,62 +1,118 @@
+import 'dart:js';
+
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:net_working/controller/login_controller/signedin_controller.dart';
 
 import 'signup_page.dart';
 
-class Signin_Page extends StatelessWidget {
+class Signedin_Page extends StatefulWidget {
+  @override
+  State<Signedin_Page> createState() => _Signedin_PageState();
+}
+
+class _Signedin_PageState extends State<Signedin_Page> {
+  bool? checkbox;
+
   TextEditingController _nameController = TextEditingController();
-  TextEditingController _idController = TextEditingController();
+
+  TextEditingController _emailController = TextEditingController();
+
+  Signedin_Controller signedin_controller = Get.put(Signedin_Controller());
+
+  Sex? _sex;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _nameController.text = signedin_controller.userRespone.value.name;
+    _emailController.text = signedin_controller.userRespone.value.email;
+    checkbox =
+        signedin_controller.userRespone.value.status == 'active' ? true : false;
+    _sex = signedin_controller.userRespone.value.gender == 'female'
+        ? Sex.female
+        : Sex.male;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Acount Information')),
+      appBar: AppBar(title: const Text('Acount Information')),
       body: Container(
         alignment: Alignment.center,
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Text('Login Page'),
+              Text('Your ID: ${signedin_controller.userRespone.value.id}'),
               Form(
                   child: Column(
                 children: [
                   TextFormField(
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       hintText: 'UserName',
                     ),
+                    // onChanged: (string){
+
+                    // },
                     controller: _nameController,
                   ),
                   TextFormField(
-                    decoration: InputDecoration(hintText: 'UserID'),
-                    controller: _idController,
+                    decoration: const InputDecoration(hintText: 'UserID'),
+                    controller: _emailController,
                   ),
                   ListTile(
-                  title: const Text('Active'),
-                  leading: Checkbox(
-                      value: ,
-                      onChanged: (value) {
-                        // signup_controller.active.value = value ?? true;
-                      }),
-                ),
-
-                ListTile(
-                  title: Text('Male'),
-                  leading: Radio<Sex>(
-                      value: Sex.male,
-                      groupValue: signup_controller.sex.value,
-                      onChanged: (Sex? value) {
-                        signup_controller.sex.value = value!;
-                      }),
-                ),
-                ListTile(
-                    title: Text('Female'),
+                    title: const Text('Active'),
+                    leading: Checkbox(
+                        value: checkbox,
+                        onChanged: (value) {
+                          setState(() {
+                            checkbox = value!;
+                            if (value) {
+                              signedin_controller.userRespone.value.status =
+                                  'active';
+                            } else {
+                              signedin_controller.userRespone.value.status =
+                                  'inactive';
+                            }
+                            print(signedin_controller.userRespone.value.status);
+                          });
+                          // signup_controller.active.value = value ?? true;
+                        }),
+                  ),
+                  ListTile(
+                    title: const Text('Male'),
                     leading: Radio<Sex>(
-                        value: Sex.female,
-                        groupValue: ,
+                        value: Sex.male,
+                        groupValue: _sex,
                         onChanged: (Sex? value) {
-                          signup_controller.sex.value = value!;
-                        })),
-                  TextButton(onPressed: () {}, child: Text('Sign in'))
+                          setState(() {
+                            _sex = value;
+                            signedin_controller.userRespone.value.gender =
+                                value!.name;
+                            print(signedin_controller.userRespone.value.gender);
+                          });
+                        }),
+                  ),
+                  ListTile(
+                      title: const Text('Female'),
+                      leading: Radio<Sex>(
+                          value: Sex.female,
+                          groupValue: _sex,
+                          onChanged: (Sex? value) {
+                            setState(() {
+                              _sex = value;
+                              signedin_controller.userRespone.value.gender =
+                                  value!.name;
+                              print(
+                                  signedin_controller.userRespone.value.gender);
+                            });
+                          })),
+                  TextButton(
+                      onPressed: () {
+                        _showDialog(context);
+                      },
+                      child: const Text('Changed '))
                 ],
               )),
             ],
@@ -64,5 +120,32 @@ class Signin_Page extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<void> _showDialog(BuildContext context) async {
+    return showDialog<void>(
+        barrierDismissible: false,
+        context: context,
+        builder: (context) => AlertDialog(
+              title: const Text('You want change?'),
+              actions: [
+                TextButton(
+                    onPressed: () {
+                      signedin_controller.userRespone.value.name =
+                          _nameController.text;
+                      signedin_controller.userRespone.value.email =
+                          _emailController.text;
+
+                      signedin_controller.changeUser();
+                      Get.offAllNamed('/');
+                    },
+                    child: const Text('Yes')),
+                TextButton(
+                    onPressed: () {
+                      Get.back();
+                    },
+                    child: const Text('No'))
+              ],
+            ));
   }
 }

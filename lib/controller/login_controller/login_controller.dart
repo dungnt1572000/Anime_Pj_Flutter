@@ -9,7 +9,7 @@ import 'package:net_working/model/user/user_respone.dart';
 class Login_Controller extends GetxController {
   var user_respone = User_Respone(0, '', '', '', '').obs;
   RxString error_notice = ''.obs;
-  
+
   void login(String name, int id) async {
     Dio dio = Dio();
     dio.options.contentType = 'application/json';
@@ -17,6 +17,7 @@ class Login_Controller extends GetxController {
       if (value.name == name) {
         user_respone.value = value;
         error_notice.value = '';
+        Get.toNamed('/signedin_page');
       } else {
         error_notice.value = 'Wrong Username or id';
       }

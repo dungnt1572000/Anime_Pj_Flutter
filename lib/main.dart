@@ -12,6 +12,7 @@ import 'package:net_working/model/manga.dart';
 import 'package:net_working/model/schedule.dart';
 import 'package:net_working/view/home_page/homepage_drawer.dart';
 import 'package:net_working/view/login/login_page.dart';
+import 'package:net_working/view/login/signedin_page.dart';
 import 'package:net_working/view/manga/manga_page.dart';
 import 'package:net_working/view/anime/page_reviews.dart';
 import 'package:net_working/view/home_page/schedule_page.dart';
@@ -29,7 +30,7 @@ import 'view/login/signup_page.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  MobileAds.instance.initialize();
+  // MobileAds.instance.initialize();
   runApp(const MyApp());
 }
 
@@ -50,6 +51,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => MyHome(),
         '/login_page': (context)=>LoginPage(),
         '/signup_page': (_)=>Signup_Page(),
+        '/signedin_page': (_)=>Signedin_Page(),
         '/images_page': (context)=>More_Images(),
         '/news_page':(_)=>News_Page(),
         '/reviews_page': (_)=>Page_Reviews(),

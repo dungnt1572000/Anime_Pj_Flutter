@@ -9,7 +9,7 @@ import '../login/login_page.dart';
 import '../manga/manga_page.dart';
 
 class HomePage_Drawer extends StatelessWidget {
-  Login_Controller signin_controller = Get.put(Login_Controller());
+  Login_Controller lognin_controller = Get.put(Login_Controller());
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,12 @@ class HomePage_Drawer extends StatelessWidget {
           DrawerHeader(
             child: GestureDetector(
               onTap: () {
-                Get.toNamed('/login_page');
+                  if(lognin_controller.user_respone.value.status==''){
+                    Get.toNamed('/login_page');
+                  }else{
+                    Get.toNamed('/signedin_page');
+                  }
+                 
                 // Navigator.of(context)
                 //     .push(MaterialPageRoute(builder: (context) => LoginPage()));
               },
@@ -40,9 +45,9 @@ class HomePage_Drawer extends StatelessWidget {
                     height: 12,
                   ),
                   Obx(() {
-                    print(signin_controller.user_respone.value.name);
+                    print(lognin_controller.user_respone.value.name);
                     return Text(
-                        'Welcome ${signin_controller.user_respone.value.name}');
+                        'Welcome ${lognin_controller.user_respone.value.name}');
                   }),
                 ],
               )),

@@ -35,7 +35,7 @@ class _ApiUserClient implements ApiUserClient {
   }
 
   @override
-  Future<User_Create> registerUser(token, body) async {
+  Future<User_Respone> registerUser(token, body) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{r'Authorization': token};
@@ -43,12 +43,30 @@ class _ApiUserClient implements ApiUserClient {
     final _data = <String, dynamic>{};
     _data.addAll(body);
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<User_Create>(
+        _setStreamType<User_Respone>(
             Options(method: 'POST', headers: _headers, extra: _extra)
                 .compose(_dio.options, '/public/v2/users',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = User_Create.fromJson(_result.data!);
+    final value = User_Respone.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<User_Respone> changeUser(token, id, body) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'Authorization': token};
+    _headers.removeWhere((k, v) => v == null);
+    final _data = <String, dynamic>{};
+    _data.addAll(body);
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<User_Respone>(
+            Options(method: 'PUT', headers: _headers, extra: _extra)
+                .compose(_dio.options, '/public/v2/users/${id}',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = User_Respone.fromJson(_result.data!);
     return value;
   }
 

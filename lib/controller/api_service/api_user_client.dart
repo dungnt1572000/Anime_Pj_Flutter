@@ -6,12 +6,18 @@ import 'package:dio/dio.dart';
 part 'api_user_client.g.dart';
 
 @RestApi(baseUrl: base_url)
-abstract class ApiUserClient{
+abstract class ApiUserClient {
   factory ApiUserClient(Dio dio, {required String baseUrl}) = _ApiUserClient;
 
   @GET('/public/v2/users/{id}')
-  Future<User_Respone> getUser(@Header('Authorization') String token,@Path('id') int id);
+  Future<User_Respone> getUser(
+      @Header('Authorization') String token, @Path('id') int id);
 
   @POST('/public/v2/users')
-  Future<User_Create> registerUser(@Header('Authorization') String token, @Body() Map<String,dynamic> body);
+  Future<User_Respone> registerUser(
+      @Header('Authorization') String token, @Body() Map<String, dynamic> body);
+
+  @PUT('/public/v2/users/{id}')
+  Future<User_Respone> changeUser(@Header('Authorization') String token,
+      @Path('id') int id, @Body() Map<String, dynamic> body);
 }

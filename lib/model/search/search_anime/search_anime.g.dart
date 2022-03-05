@@ -7,13 +7,13 @@ part of 'search_anime.dart';
 // **************************************************************************
 
 Search_Anime _$Search_AnimeFromJson(Map<String, dynamic> json) => Search_Anime(
-      requestHash: json['request_hash'] as String,
-      requestCached: json['request_cached'] as bool,
-      requestCacheExpiry: json['request_cache_expiry'] as int,
+      requestHash: json['requestHash'] as String,
+      requestCached: json['requestCached'] as bool,
+      requestCacheExpiry: json['requestCacheExpiry'] as int,
       results: (json['results'] as List<dynamic>)
           .map((e) => Results_Anime.fromJson(e as Map<String, dynamic>))
           .toList(),
-      lastPage: json['last_page'] as int,
+      lastPage: json['lastPage'] as int,
     );
 
 Map<String, dynamic> _$Search_AnimeToJson(Search_Anime instance) =>

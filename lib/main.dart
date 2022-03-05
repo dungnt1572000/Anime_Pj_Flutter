@@ -10,18 +10,20 @@ import 'package:net_working/constant/translations/vocabulary.dart';
 import 'package:net_working/controller/schedule_page_controller.dart';
 import 'package:net_working/model/manga.dart';
 import 'package:net_working/model/schedule.dart';
+import 'package:net_working/view/homepage_drawer.dart';
+import 'package:net_working/view/login/login_page.dart';
 import 'package:net_working/view/manga_page.dart';
-import 'package:net_working/view/page_reviews.dart';
+import 'package:net_working/view/anime/page_reviews.dart';
 import 'package:net_working/view/schedule_page.dart';
 import 'package:net_working/view/search_page.dart';
 import 'package:net_working/view/top_page.dart';
 import 'package:readmore/readmore.dart';
 
-import '../controller/anime_page_controller.dart';
-import '../controller/call_api_serice.dart';
-import '../model/anime/animes_characters.dart';
-import 'images.dart';
-import 'news_page.dart';
+import 'controller/anime_page_controller.dart';
+import 'controller/call_api_serice.dart';
+import 'model/anime/animes_characters.dart';
+import 'view/anime/images.dart';
+import 'view/anime/news_page.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -147,70 +149,7 @@ class _MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
           ],
         ),
         drawer: Drawer(
-            child: Container(
-          color: Colors.blue,
-          child: ListView(
-            children: <Widget>[
-              DrawerHeader(
-                child: Center(
-                    child: Column(
-                  children: [
-                    ClipRRect(
-                      child: Image.asset(
-                        'assets/img_ava.png',
-                        fit: BoxFit.cover,
-                        height: 100,
-                        width: 100,
-                      ),
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    SizedBox(
-                      height: 12,
-                    ),
-                    Text('Hello i\'m Dung'),
-                  ],
-                )),
-                decoration: BoxDecoration(
-                  color: Colors.orange,
-                ),
-              ),
-              ListTile(
-                title: new Text("MangaPage".tr),
-                onTap: () {
-                  Get.back();
-                  Get.to(() => Manga_Page());
-                },
-              ),
-              Divider(),
-              ListTile(
-                title: Text("Top".tr),
-                onTap: () {
-                  Get.back();
-                  Get.to(() => Top_Page());
-                  // Top_Page();
-                },
-              ),
-              Divider(),
-              ListTile(
-                title: Text("Search".tr),
-                onTap: () {
-                  Get.back();
-                  Get.to(() => Search_Page());
-                  // Top_Page();
-                },
-              ),
-              ListTile(
-                title: Text("Schedule".tr),
-                onTap: () {
-                  Get.back();
-                  Get.to(() => Schedule_Page());
-                  // Top_Page();
-                },
-              ),
-              Divider(),
-            ],
-          ),
-        )),
+            child: HomePage_Drawer()),
         body: Center(
           child: Container(
             alignment: Alignment.center,
@@ -224,12 +163,12 @@ class _MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 70,
                       ),
                       Text(
                         'Today'.tr + 'TV',
-                        style: TextStyle(fontSize: 25, color: Colors.amber),
+                        style: const TextStyle(fontSize: 25, color: Colors.amber),
                       ),
                       Obx(
                         () => SizedBox(
@@ -252,7 +191,7 @@ class _MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
                                         borderRadius: BorderRadius.circular(13)),
                                     elevation: 8,
                                     child: Padding(
-                                      padding: EdgeInsets.all(12),
+                                      padding: const EdgeInsets.all(12),
                                       child: Column(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceEvenly,
@@ -261,7 +200,7 @@ class _MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
                                         children: [
                                           Text(
                                             'Start at'.tr + ' : ${c.hour}h UTC',
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                 color: Colors.deepOrange,
                                                 fontSize: 19),
                                           ),

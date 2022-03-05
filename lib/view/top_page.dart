@@ -8,7 +8,7 @@ import 'package:net_working/controller/top_page_controller/top_manga_page_contro
 import 'package:net_working/model/top/top_anime.dart';
 import 'package:net_working/model/top/top_manga.dart';
 
-import 'news_page.dart';
+import 'anime/news_page.dart';
 
 class Top_Page extends StatefulWidget {
   @override

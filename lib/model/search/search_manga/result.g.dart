@@ -7,9 +7,9 @@ part of 'result.dart';
 // **************************************************************************
 
 Results _$ResultsFromJson(Map<String, dynamic> json) => Results(
-      malId: json['mal_id'] as int,
+      malId: json['malId'] as int,
       url: json['url'] as String,
-      imageUrl: json['image_url'] as String,
+      imageUrl: json['imageUrl'] as String,
       title: json['title'] as String,
       publishing: json['publishing'] as bool,
       synopsis: json['synopsis'] as String,
@@ -17,8 +17,8 @@ Results _$ResultsFromJson(Map<String, dynamic> json) => Results(
       chapters: json['chapters'] as int,
       volumes: json['volumes'] as int,
       score: (json['score'] as num).toDouble(),
-      startDate: json['start_date'],
-      endDate: json['end_date'],
+      startDate: json['startDate'],
+      endDate: json['endDate'],
       members: json['members'] as int,
     );
 

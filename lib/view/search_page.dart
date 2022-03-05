@@ -7,7 +7,7 @@ import 'package:net_working/controller/top_page_controller/top_manga_page_contro
 import 'package:net_working/model/search/search_anime/search_anime.dart';
 import 'package:net_working/model/search/search_manga/search_manga.dart';
 import 'package:net_working/model/top/top_manga.dart';
-import 'package:net_working/view/news_page.dart';
+import 'package:net_working/view/anime/news_page.dart';
 
 class Search_Page extends StatelessWidget {
   const Search_Page({Key? key}) : super(key: key);

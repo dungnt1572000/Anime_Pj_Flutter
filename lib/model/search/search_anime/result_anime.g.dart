@@ -8,19 +8,19 @@ part of 'result_anime.dart';
 
 Results_Anime _$Results_AnimeFromJson(Map<String, dynamic> json) =>
     Results_Anime(
-      malId: json['mal_id'] as int,
+      malId: json['malId'] as int,
       url: json['url'] as String,
-      imageUrl: json['image_url'] as String,
+      imageUrl: json['imageUrl'] as String,
       title: json['title'] as String,
       airing: json['airing'] as bool,
       synopsis: json['synopsis'] as String,
       type: json['type'] as String,
       episodes: json['episodes'] as int,
       score: (json['score'] as num).toDouble(),
-      startDate: json['start_date'] ,
-      endDate: json['end_date'] ,
+      startDate: json['startDate'],
+      endDate: json['endDate'],
       members: json['members'] as int,
-      rated: json['rated'] ,
+      rated: json['rated'],
     );
 
 Map<String, dynamic> _$Results_AnimeToJson(Results_Anime instance) =>

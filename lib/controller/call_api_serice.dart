@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:net_working/model/animes_characters.dart';
-import 'package:net_working/model/images.dart';
-import 'package:net_working/model/news.dart';
-import 'package:net_working/model/reviews.dart';
+import 'package:net_working/model/anime/animes_characters.dart';
+import 'package:net_working/model/anime/images.dart';
+import 'package:net_working/model/anime/news.dart';
+import 'package:net_working/model/anime/reviews.dart';
 import 'package:net_working/model/schedule.dart';
 import 'package:net_working/model/search/search_anime/search_anime.dart';
 import 'package:net_working/model/search/search_manga/search_manga.dart';

@@ -5,7 +5,7 @@ import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:net_working/controller/anime_page_controller.dart';
 
-import 'main.dart';
+import '../main.dart';
 
 class Manga_Page extends StatelessWidget {
   final animePage_controller p = Get.put(animePage_controller());

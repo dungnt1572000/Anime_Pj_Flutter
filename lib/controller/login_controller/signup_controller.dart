@@ -22,6 +22,8 @@ class Signup_Controller extends GetxController {
     print(userCreate.value.toJson());
   }
 
+
+
   void sign_up() async {
     makeuserCreate(sex.value.name);
     Dio dio = Dio();
@@ -31,8 +33,9 @@ class Signup_Controller extends GetxController {
         .then((value) {
       // userCreate.value = value;
       signin_controller.user_respone.value = value;
-      Logger().e(value.toString());
-      // s.error_text.value = '';
+      // Logger().e(value.toString());
+      error_text.value = '';
+      // Get.offNamed('/');
     }).catchError((Object obj) {
       switch (obj.runtimeType) {
         case DioError:

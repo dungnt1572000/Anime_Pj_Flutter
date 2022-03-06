@@ -21,6 +21,14 @@ class Signedin_Controller extends GetxController {
     print(userRespone.toJson());
   }
 
+  @override
+  void onClose() {
+    // TODO: implement onClose
+    super.onClose();
+    onDelete;
+    login_controller.onDelete;
+  }
+
   void changeUser() {
     Dio dio = Dio();
     dio.options.contentType = 'application/json';

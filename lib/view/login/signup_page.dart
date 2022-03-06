@@ -31,32 +31,32 @@ class Signup_Page extends StatelessWidget {
                   decoration: InputDecoration(hintText: 'email'),
                 ),
                 // TextFormField(),
-                ListTile(
-                  title: const Text('Active'),
-                  leading: Checkbox(
-                      value: signup_controller.active.value,
-                      onChanged: (value) {
-                        signup_controller.active.value = value ?? true;
-                      }),
-                ),
+                Obx(() => ListTile(
+                      title: const Text('Active'),
+                      leading: Checkbox(
+                          value: signup_controller.active.value,
+                          onChanged: (value) {
+                            signup_controller.active.value = value ?? true;
+                          }),
+                    )),
 
-                ListTile(
-                  title: Text('Male'),
-                  leading: Radio<Sex>(
-                      value: Sex.male,
-                      groupValue: signup_controller.sex.value,
-                      onChanged: (Sex? value) {
-                        signup_controller.sex.value = value!;
-                      }),
-                ),
-                ListTile(
+                Obx(() => ListTile(
+                      title: Text('Male'),
+                      leading: Radio<Sex>(
+                          value: Sex.male,
+                          groupValue: signup_controller.sex.value,
+                          onChanged: (Sex? value) {
+                            signup_controller.sex.value = value!;
+                          }),
+                    )),
+                Obx(() => ListTile(
                     title: Text('Female'),
                     leading: Radio<Sex>(
                         value: Sex.female,
                         groupValue: signup_controller.sex.value,
                         onChanged: (Sex? value) {
                           signup_controller.sex.value = value!;
-                        })),
+                        }))),
               ],
             )),
             TextButton(
@@ -67,6 +67,10 @@ class Signup_Page extends StatelessWidget {
                 },
                 child: Text('Sign up')),
             Obx(() => Text(signup_controller.error_text.value)),
+            Obx(() => Text(
+                signup_controller.signin_controller.user_respone.value.id == 0
+                    ? ''
+                    : 'Sign up succed! your id:${signup_controller.signin_controller.user_respone.value.id}')),
           ],
         ),
       ),
